@@ -5,6 +5,7 @@ import { DetailsOfPartyComponent } from './details-of-party/details-of-party.com
 import { ProfitAndLossAccountComponent } from './profit-and-loss-account/profit-and-loss-account.component';
 import { BalanceSheetComponent } from './balance-sheet/balance-sheet.component';
 import { DataEntryPreviewComponent } from './data-entry-preview/data-entry-preview.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,8 @@ import { DataEntryPreviewComponent } from './data-entry-preview/data-entry-previ
   ],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
+    FormsModule,
     RouterModule.forChild([
       { path: 'details-of-party', component: DetailsOfPartyComponent },
       {

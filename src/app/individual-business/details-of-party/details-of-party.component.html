@@ -1,1 +1,46 @@
-<p>details-of-party works!</p>
+<form [formGroup]="detailsForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="legalName">Legal Name of Auditee:</label>
+    <input id="legalName" formControlName="legalName" type="text" />
+    <div *ngIf="detailsForm.get('legalName')?.invalid && detailsForm.get('legalName')?.touched">
+      Legal Name is required.
+    </div>
+  </div>
+
+  <div>
+    <label for="proprietorName">Name of Proprietor:</label>
+    <input id="proprietorName" formControlName="proprietorName" type="text" />
+    <div *ngIf="detailsForm.get('proprietorName')?.invalid && detailsForm.get('proprietorName')?.touched">
+      Proprietor Name is required.
+    </div>
+  </div>
+
+  <div>
+    <label for="pan">PAN:</label>
+    <input id="pan" formControlName="pan" type="text" />
+    <div *ngIf="detailsForm.get('pan')?.invalid && detailsForm.get('pan')?.touched">
+      <div *ngIf="detailsForm.get('pan')?.errors?.['required']">PAN is required.</div>
+      <div *ngIf="detailsForm.get('pan')?.errors?.['pattern']">Invalid PAN format.</div>
+    </div>
+  </div>
+
+  <div>
+    <label for="address">Address:</label>
+    <input id="address" formControlName="address" type="text" />
+    <div *ngIf="detailsForm.get('address')?.invalid && detailsForm.get('address')?.touched">Address is required.</div>
+  </div>
+
+  <div>
+    <label for="financialYear">Financial Year:</label>
+    <select id="financialYear" formControlName="financialYear">
+      <option *ngFor="let year of financialYears" [value]="year">
+        {{ year }}
+      </option>
+    </select>
+    <div *ngIf="detailsForm.get('financialYear')?.invalid && detailsForm.get('financialYear')?.touched">
+      Financial Year is required.
+    </div>
+  </div>
+
+  <button type="submit">Submit</button>
+</form>
