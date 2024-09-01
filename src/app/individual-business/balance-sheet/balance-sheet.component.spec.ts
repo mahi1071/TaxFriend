@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DataEntryComponent } from './data-entry.component';
+import { BalanceSheetComponent } from './balance-sheet.component';
 
-describe('DataEntryComponent', () => {
-  let component: DataEntryComponent;
-  let fixture: ComponentFixture<DataEntryComponent>;
+describe('BalanceSheetComponent', () => {
+  let component: BalanceSheetComponent;
+  let fixture: ComponentFixture<BalanceSheetComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DataEntryComponent ]
+      declarations: [ BalanceSheetComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(DataEntryComponent);
+    fixture = TestBed.createComponent(BalanceSheetComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

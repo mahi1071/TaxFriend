@@ -1,13 +1,30 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DataEntryComponent } from './data-entry/data-entry.component';
 import { RouterModule } from '@angular/router';
+import { DetailsOfPartyComponent } from './details-of-party/details-of-party.component';
+import { ProfitAndLossAccountComponent } from './profit-and-loss-account/profit-and-loss-account.component';
+import { BalanceSheetComponent } from './balance-sheet/balance-sheet.component';
+import { DataEntryPreviewComponent } from './data-entry-preview/data-entry-preview.component';
 
 @NgModule({
-  declarations: [DataEntryComponent],
+  declarations: [
+    DetailsOfPartyComponent,
+    ProfitAndLossAccountComponent,
+    BalanceSheetComponent,
+    DataEntryPreviewComponent,
+  ],
   imports: [
     CommonModule,
-    RouterModule.forChild([{ path: '', component: DataEntryComponent }]),
+    RouterModule.forChild([
+      { path: 'details-of-party', component: DetailsOfPartyComponent },
+      {
+        path: 'profit-and-loss-account',
+        component: ProfitAndLossAccountComponent,
+      },
+      { path: 'balance-sheet', component: BalanceSheetComponent },
+      { path: 'preview', component: DataEntryPreviewComponent },
+      { path: '', redirectTo: '/details-of-party', pathMatch: 'full' },
+    ]),
   ],
 })
 export class IndividualBusinessModule {}
