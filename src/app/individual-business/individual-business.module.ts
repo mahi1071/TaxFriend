@@ -6,6 +6,7 @@ import { ProfitAndLossAccountComponent } from './profit-and-loss-account/profit-
 import { BalanceSheetComponent } from './balance-sheet/balance-sheet.component';
 import { DataEntryPreviewComponent } from './data-entry-preview/data-entry-preview.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { IndividualBusinessComponent } from './individual-business.component';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ProfitAndLossAccountComponent,
     BalanceSheetComponent,
     DataEntryPreviewComponent,
+    IndividualBusinessComponent,
   ],
   imports: [
     CommonModule,
@@ -26,7 +28,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
       },
       { path: 'balance-sheet', component: BalanceSheetComponent },
       { path: 'preview', component: DataEntryPreviewComponent },
-      { path: '', redirectTo: '/details-of-party', pathMatch: 'full' },
+      { path: '', component: IndividualBusinessComponent },
     ]),
   ],
 })
