@@ -1,4 +1,4 @@
-form {
+.form {
   width: fit-content;
   padding: 1rem;
   border: 1px solid #ccc;
@@ -6,30 +6,39 @@ form {
   background-color: #f9f9f9;
 }
 
-div {
+.form-group {
   margin-bottom: 1rem;
 }
 
 label {
   display: block;
   margin-bottom: 0.5rem;
+  font-family: Georgia, "Times New Roman", Times, serif;
 }
 
-input {
+.error-message {
+  font-size: small;
+  font-weight: 300;
+  color: red;
+}
+
+.form-control {
   width: 60vw;
   padding: 0.5rem;
   border: 1px solid #ccc;
   border-radius: 5px;
 }
 
-select {
-  width: 61.1vw;
-  padding: 0.5rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+.form-control:focus {
+  outline-color: #007bff;
+  outline-width: 2px;
 }
 
-button {
+select.form-control {
+  width: 61.1vw;
+}
+
+.btn {
   padding: 0.5rem 1rem;
   background-color: #007bff;
   color: white;
@@ -38,6 +47,18 @@ button {
   cursor: pointer;
 }
 
-button:hover {
+.btn:hover {
   background-color: #0056b3;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.center-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 84vh; 
 }

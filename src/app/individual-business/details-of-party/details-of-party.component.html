@@ -1,46 +1,58 @@
-<form [formGroup]="detailsForm" (ngSubmit)="onSubmit()">
-  <div>
-    <label for="legalName">Legal Name of Auditee Mahiiiiiiii:</label>
-    <input id="legalName" formControlName="legalName" type="text" />
-    <div *ngIf="detailsForm.get('legalName')?.invalid && detailsForm.get('legalName')?.touched">
-      Legal Name is required.
+<div class="center-div">
+  <form [formGroup]="detailsForm" (ngSubmit)="onSubmit()" class="form">
+    <div class="form-group">
+      <label for="legalName">Legal Name of Auditee:</label>
+      <input id="legalName" formControlName="legalName" type="text" class="form-control" />
+      <div *ngIf="detailsForm.get('legalName')?.invalid && detailsForm.get('legalName')?.touched" class="error-message">
+        Legal Name is required.
+      </div>
     </div>
-  </div>
 
-  <div>
-    <label for="proprietorName">Name of Proprietor:</label>
-    <input id="proprietorName" formControlName="proprietorName" type="text" />
-    <div *ngIf="detailsForm.get('proprietorName')?.invalid && detailsForm.get('proprietorName')?.touched">
-      Proprietor Name is required.
+    <div class="form-group">
+      <label for="proprietorName">Name of Proprietor:</label>
+      <input id="proprietorName" formControlName="proprietorName" type="text" class="form-control" />
+      <div
+        *ngIf="detailsForm.get('proprietorName')?.invalid && detailsForm.get('proprietorName')?.touched"
+        class="error-message"
+      >
+        Proprietor Name is required.
+      </div>
     </div>
-  </div>
 
-  <div>
-    <label for="pan">PAN:</label>
-    <input id="pan" formControlName="pan" type="text" />
-    <div *ngIf="detailsForm.get('pan')?.invalid && detailsForm.get('pan')?.touched">
-      <div *ngIf="detailsForm.get('pan')?.errors?.['required']">PAN is required.</div>
-      <div *ngIf="detailsForm.get('pan')?.errors?.['pattern']">Invalid PAN format.</div>
+    <div class="form-group">
+      <label for="pan">PAN:</label>
+      <input id="pan" formControlName="pan" type="text" class="form-control" />
+      <div *ngIf="detailsForm.get('pan')?.invalid && detailsForm.get('pan')?.touched" class="error-message">
+        <div *ngIf="detailsForm.get('pan')?.errors?.['required']">PAN is required.</div>
+        <div *ngIf="detailsForm.get('pan')?.errors?.['pattern']">Invalid PAN format.</div>
+      </div>
     </div>
-  </div>
 
-  <div>
-    <label for="address">Address:</label>
-    <input id="address" formControlName="address" type="text" />
-    <div *ngIf="detailsForm.get('address')?.invalid && detailsForm.get('address')?.touched">Address is required.</div>
-  </div>
-
-  <div>
-    <label for="financialYear">Financial Year:</label>
-    <select id="financialYear" formControlName="financialYear">
-      <option *ngFor="let year of financialYears" [value]="year">
-        {{ year }}
-      </option>
-    </select>
-    <div *ngIf="detailsForm.get('financialYear')?.invalid && detailsForm.get('financialYear')?.touched">
-      Financial Year is required.
+    <div class="form-group">
+      <label for="address">Address:</label>
+      <input id="address" formControlName="address" type="text" class="form-control" />
+      <div *ngIf="detailsForm.get('address')?.invalid && detailsForm.get('address')?.touched" class="error-message">
+        Address is required.
+      </div>
     </div>
-  </div>
 
-  <button type="submit">Submit</button>
-</form>
+    <div class="form-group">
+      <label for="financialYear">Financial Year:</label>
+      <select id="financialYear" formControlName="financialYear" class="form-control">
+        <option *ngFor="let year of financialYears" [value]="year">
+          {{ year }}
+        </option>
+      </select>
+      <div
+        *ngIf="detailsForm.get('financialYear')?.invalid && detailsForm.get('financialYear')?.touched"
+        class="error-message"
+      >
+        Financial Year is required.
+      </div>
+    </div>
+
+    <div class="btn-container">
+      <button type="submit" class="btn">Submit</button>
+    </div>
+  </form>
+</div>
