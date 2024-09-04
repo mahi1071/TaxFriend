@@ -20,16 +20,7 @@ import { IndividualBusinessComponent } from './individual-business.component';
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
-    RouterModule.forChild([
-      { path: 'details-of-party', component: DetailsOfPartyComponent },
-      {
-        path: 'profit-and-loss-account',
-        component: ProfitAndLossAccountComponent,
-      },
-      { path: 'balance-sheet', component: BalanceSheetComponent },
-      { path: 'preview', component: DataEntryPreviewComponent },
-      { path: '', component: IndividualBusinessComponent },
-    ]),
+    RouterModule.forChild([{ path: '', component: IndividualBusinessComponent }]),
   ],
 })
 export class IndividualBusinessModule {}
