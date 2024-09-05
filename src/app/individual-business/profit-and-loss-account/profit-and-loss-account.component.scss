@@ -1,0 +1,78 @@
+.form {
+  max-width: 61.2vw;
+  justify-content: center;
+  padding: 1rem;
+  margin-top: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.error-message {
+  font-size: small;
+  font-weight: 300;
+  color: red;
+}
+
+.form-control {
+  width: 24vw;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.form-control:focus {
+  outline-color: #007bff;
+  outline-width: 2px;
+}
+
+.btn {
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
+.btn:disabled {
+  background-color: #cccccc;
+  color: #666666;
+  cursor: not-allowed;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.center-div {
+  display: flex;
+  justify-content: center;
+}
+
+.form-control-container {
+  display: flex;
+}
+
+.form-control-container div {
+  flex: 1;
+}
+
+.form-control-container div:first-child {
+  margin-right: 1rem;
+}

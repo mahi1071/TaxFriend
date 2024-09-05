@@ -51,6 +51,12 @@ select.form-control {
   background-color: #0056b3;
 }
 
+.btn:disabled {
+  background-color: #cccccc;
+  color: #666666;
+  cursor: not-allowed;
+}
+
 .btn-container {
   display: flex;
   justify-content: flex-end;
@@ -60,5 +66,5 @@ select.form-control {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 84vh; 
+  height: 84vh;
 }

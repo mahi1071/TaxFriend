@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from '../data.service';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-profit-and-loss-account',
@@ -8,17 +9,67 @@ import { DataService } from '../data.service';
   styleUrls: ['./profit-and-loss-account.component.scss'],
 })
 export class ProfitAndLossAccountComponent {
-  formData: any = {};
+  financialForm!: FormGroup;
+  @Output() showForm = new EventEmitter<string>();
 
-  constructor(private router: Router, private formDataService: DataService) {}
+  constructor(private fb: FormBuilder, private formDataService: DataService) {}
 
   ngOnInit() {
-    this.formData =
-      this.formDataService.getFormData('profit-and-loss-account') || {};
+    const formData = this.formDataService.getFormData('profit-and-loss-account') || {};
+
+    this.financialForm = this.fb.group(
+      {
+        openingStock: [formData.openingStock || '', Validators.required],
+        closingStock: [formData.closingStock || '', Validators.required],
+        sales: [formData.sales || '', Validators.required],
+        otherDirectIncomes: [formData.otherDirectIncomes || ''],
+        purchase: [formData.purchase || ''],
+        otherDirectExpenses: [formData.otherDirectExpenses || ''],
+        grossProfit: [formData.grossProfit || ''],
+        grossProfitPercentage: [formData.grossProfitPercentage || ''],
+        businessVisitCommissions: [formData.businessVisitCommissions || ''],
+        depreciation: [formData.depreciation || ''],
+        interestOnLoan: [formData.interestOnLoan || ''],
+        insuranceCommission: [formData.insuranceCommission || ''],
+        netProfit: [formData.netProfit || ''],
+        netProfitPercentage: [formData.netProfitPercentage || ''],
+      },
+      { validators: [this.grossProfitOrPercentageValidator, this.netProfitOrPercentageValidator] }
+    );
+  }
+
+  grossProfitOrPercentageValidator(control: AbstractControl): { [key: string]: boolean } | null {
+    const grossProfit = control.get('grossProfit');
+    const grossProfitPercentage = control.get('grossProfitPercentage');
+
+    if (!grossProfit?.value && !grossProfitPercentage?.value) {
+      return { grossProfitOrPercentageRequired: true };
+    }
+
+    return null;
+  }
+
+  netProfitOrPercentageValidator(control: AbstractControl): { [key: string]: boolean } | null {
+    const netProfit = control.get('netProfit');
+    const netProfitPercentage = control.get('netProfitPercentage');
+
+    if (!netProfit?.value && !netProfitPercentage?.value) {
+      return { netProfitOrPercentageRequired: true };
+    }
+
+    return null;
   }
 
   onSubmit() {
-    this.formDataService.setFormData('profit-and-loss-account', this.formData);
-    this.router.navigate(['/balance-sheet']);
+    if (this.financialForm.valid) {
+      this.formDataService.setFormData('profit-and-loss-account', this.financialForm.value);
+      this.showForm.emit('balance-sheet');
+    } else {
+      console.log('Form is invalid');
+    }
+  }
+
+  goBack() {
+    this.showForm.emit('details-of-party');
   }
 }

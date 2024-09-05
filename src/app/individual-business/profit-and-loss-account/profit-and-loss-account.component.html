@@ -1,1 +1,113 @@
-<p>profit-and-loss-account works!</p>
+<div class="center-div">
+  <form [formGroup]="financialForm" (ngSubmit)="onSubmit()" class="form">
+    <div class="form-control-container">
+      <!-- Opening Stock -->
+      <div class="form-group">
+        <label for="openingStock">Opening Stock* :</label>
+        <input id="openingStock" formControlName="openingStock" type="number" class="form-control" />
+        <div *ngIf="financialForm.get('openingStock')?.invalid && financialForm.get('openingStock')?.touched" class="error-message">Opening Stock is required.</div>
+      </div>
+
+      <!-- Closing Stock -->
+      <div class="form-group">
+        <label for="closingStock">Closing Stock* :</label>
+        <input id="closingStock" formControlName="closingStock" type="number" class="form-control" />
+        <div *ngIf="financialForm.get('closingStock')?.invalid && financialForm.get('closingStock')?.touched" class="error-message">Closing Stock is required.</div>
+      </div>
+    </div>
+
+    <div class="form-control-container">
+      <!-- Sales -->
+      <div class="form-group">
+        <label for="sales">Sales* :</label>
+        <input id="sales" formControlName="sales" type="number" class="form-control" />
+        <div *ngIf="financialForm.get('sales')?.invalid && financialForm.get('sales')?.touched" class="error-message">Sales is required.</div>
+      </div>
+
+      <!-- Other Direct Incomes -->
+      <div class="form-group">
+        <label for="otherDirectIncomes">Other Direct Incomes :</label>
+        <input id="otherDirectIncomes" formControlName="otherDirectIncomes" type="number" class="form-control" />
+      </div>
+    </div>
+
+    <div class="form-control-container">
+      <!-- Purchase -->
+      <div class="form-group">
+        <label for="purchase">Purchase :</label>
+        <input id="purchase" formControlName="purchase" type="number" class="form-control" />
+      </div>
+
+      <!-- Other Direct Expenses -->
+      <div class="form-group">
+        <label for="otherDirectExpenses">Other Direct Expenses :</label>
+        <input id="otherDirectExpenses" formControlName="otherDirectExpenses" type="number" class="form-control" />
+      </div>
+    </div>
+
+    <!-- Gross Profit -->
+    <div class="form-group">
+      <label for="grossProfit">Gross Profit* :</label>
+      <input id="grossProfit" formControlName="grossProfit" type="number" class="form-control" placeholder="Fill in Amount" />
+      or
+      <input id="grossProfitPercentage" formControlName="grossProfitPercentage" type="number" class="form-control" placeholder="Fill in %" />
+      <div
+        *ngIf="financialForm.errors?.['grossProfitOrPercentageRequired'] &&
+          (financialForm.get('grossProfit')?.touched || financialForm.get('grossProfitPercentage')?.touched)"
+        class="error-message"
+      >
+        Gross Profit is required.
+      </div>
+    </div>
+
+    <div class="form-control-container">
+      <!-- Business Visit Commissions / Other Indirect Income -->
+      <div class="form-group">
+        <label for="businessVisitCommissions">Business Visit Commissions / Other Indirect Income :</label>
+        <input id="businessVisitCommissions" formControlName="businessVisitCommissions" type="number" class="form-control" />
+      </div>
+
+      <!-- Depreciation -->
+      <div class="form-group">
+        <label for="depreciation">Depreciation :</label>
+        <input id="depreciation" formControlName="depreciation" type="number" class="form-control" />
+      </div>
+    </div>
+
+    <div class="form-control-container">
+      <!-- Interest on Loan -->
+      <div class="form-group">
+        <label for="interestOnLoan">Interest on Loan :</label>
+        <input id="interestOnLoan" formControlName="interestOnLoan" type="number" class="form-control" />
+      </div>
+
+      <!-- Insurance Commission / Brokerage -->
+      <div class="form-group">
+        <label for="insuranceCommission">Insurance Commission / Brokerage :</label>
+        <input id="insuranceCommission" formControlName="insuranceCommission" type="number" class="form-control" />
+      </div>
+    </div>
+
+    <!-- Net Profit -->
+    <div class="form-group">
+      <label for="netProfit">Net Profit* :</label>
+      <input id="netProfit" formControlName="netProfit" type="number" class="form-control" placeholder="Fill in Amount" />
+      or
+      <input id="netProfitPercentage" formControlName="netProfitPercentage" type="number" class="form-control" placeholder="Fill in %" />
+      <div
+        *ngIf="
+          financialForm.errors?.['netProfitOrPercentageRequired'] &&
+          (financialForm.get('netProfit')?.touched || financialForm.get('netProfitPercentage')?.touched)
+        "
+        class="error-message"
+      >
+        Net Profit is required.
+      </div>
+    </div>
+
+    <div class="btn-container">
+      <button class="btn" (click)="goBack()">Back</button>
+      <button type="submit" class="btn" [disabled]="financialForm.invalid">Submit</button>
+    </div>
+  </form>
+</div>

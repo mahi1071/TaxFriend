@@ -1,1 +1,6 @@
-<app-details-of-party></app-details-of-party>
+<app-details-of-party *ngIf="currentForm == 'details-of-party'" (showForm)="showForm($event)"></app-details-of-party>
+<app-profit-and-loss-account *ngIf="currentForm == 'profit-and-loss-account'" (showForm)="showForm($event)"></app-profit-and-loss-account>
+<app-balance-sheet *ngIf="currentForm == 'balance-sheet'" (showForm)="showForm($event)"></app-balance-sheet>
+
+
+<!-- <app-profit-and-loss-account></app-profit-and-loss-account> -->
