@@ -1,1 +1,105 @@
-<p>balance-sheet works!</p>
+<div class="center-div">
+  <form [formGroup]="balancesheetForm" (ngSubmit)="onSubmit()" class="form">
+    <div class="form-control-container">
+      <!-- Opening -->
+      <div class="form-group">
+        <label for="opening">Opening* :</label>
+        <input id="opening" formControlName="opening" type="number" class="form-control" />
+        <div *ngIf="balancesheetForm.get('opening')?.invalid && balancesheetForm.get('opening')?.touched" class="error-message">Opening Capital is required.</div>
+      </div>
+
+      <!-- Drawing -->
+      <div class="form-group">
+        <label for="drawing">Drawing :</label>
+        <input id="drawing" formControlName="drawing" type="number" class="form-control" />
+      </div>
+    </div>
+
+    <div class="form-control-container">
+      <!-- Other Income Not Reported In Profit And Loss Account -->
+      <div class="form-group">
+        <label for="otherIncomeNotReportedInProfitAndLossAccount">Other Income Not Reported In Profit And Loss Account :</label>
+        <input id="otherIncomeNotReportedInProfitAndLossAccount" formControlName="otherIncomeNotReportedInProfitAndLossAccount" type="number" class="form-control2" />
+      </div>
+    </div>
+
+    <div class="form-control-container">
+      <!-- Loan Outstanding -->
+      <div class="form-group">
+        <label for="loanOutstanding">Loan Outstanding :</label>
+        <input id="loanOutstanding" formControlName="loanOutstanding" type="number" class="form-control" />
+      </div>
+
+      <!-- Sundry Creditor -->
+      <div class="form-group">
+        <label for="sundryCreditor">Sundry Creditor :</label>
+        <input id="sundryCreditor" formControlName="sundryCreditor" type="number" class="form-control" />
+      </div>
+    </div>
+
+    <div class="form-control-container">
+      <!-- Fixed Asset Balance -->
+      <div class="form-group">
+        <label for="fixedAssetBalance">Fixed Asset Balance* :</label>
+        <input id="fixedAssetBalance" formControlName="fixedAssetBalance" type="number" class="form-control" />
+        <div *ngIf="balancesheetForm.get('fixedAssetBalance')?.invalid && balancesheetForm.get('fixedAssetBalance')?.touched" class="error-message">
+          Fixed Asset Balance is required.
+        </div>
+      </div>
+
+      <!-- Closing Balance At Bank -->
+      <div class="form-group">
+        <label for="closingBalanceAtBank">Closing Balance At Bank* :</label>
+        <input id="closingBalanceAtBank" formControlName="closingBalanceAtBank" type="number" class="form-control" />
+        <div *ngIf="balancesheetForm.get('closingBalanceAtBank')?.invalid && balancesheetForm.get('closingBalanceAtBank')?.touched" class="error-message">
+          Closing Balance At Bank is required.
+        </div>
+      </div>
+    </div>
+
+    <div class="form-control-container">
+      <!-- Cash In Hand -->
+      <div class="form-group">
+        <label for="cashInHand">Cash In Hand* :</label>
+        <input id="cashInHand" formControlName="cashInHand" type="number" class="form-control" />
+        <div *ngIf="balancesheetForm.get('cashInHand')?.invalid && balancesheetForm.get('cashInHand')?.touched" class="error-message">Cash In Hand is required.</div>
+      </div>
+
+      <!-- Sundry Debtor -->
+      <div class="form-group">
+        <label for="sundryDebtor">Sundry Debtor :</label>
+        <input id="sundryDebtor" formControlName="sundryDebtor" type="number" class="form-control" />
+      </div>
+    </div>
+
+    <!-- Other Asset -->
+    <div class="form-control-container">
+      <div class="form-group">
+        <label for="otherAsset">Other Asset :</label>
+        <input id="otherAsset" formControlName="otherAsset" type="number" class="form-control" />
+      </div>
+      <div style="margin-top: 1.5rem; margin-left: 17vw">
+        <button class="btn" (click)="addNewBankDetails()">Add Bank Details</button>
+      </div>
+    </div>
+
+    <div *ngFor="let bankDetail of bankDetails.controls; let i = index">
+      <div class="form-control-container">
+        <div class="form-group">
+          <label for="bankName{{ i }}">Bank {{ i + 1 }} Details:</label>
+          <input type="text" id="bankName{{ i }}" formControlName="bankName" class="form-control" />
+        </div>
+        <div class="form-group">
+          <label for="balance{{ i }}">Balance:</label>
+          <input type="number" id="balance{{ i }}" formControlName="balance" class="form-control" />
+        </div>
+        <!-- <button type="button" class="btn" (click)="removeBankDetails(i)">Remove</button> -->
+      </div>
+    </div>
+
+    <div class="btn-container">
+      <button class="btn" (click)="goBack()">Back</button>
+      <button type="submit" class="btn" [disabled]="balancesheetForm.invalid">Save</button>
+    </div>
+  </form>
+</div>
